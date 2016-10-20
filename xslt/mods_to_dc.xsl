@@ -94,7 +94,7 @@
 
 	<xsl:template match="mods:name">
 		<xsl:choose>
-			<xsl:when test="mods:role/mods:roleTerm[@type='text']='creator' or mods:role/mods:roleTerm[@type='code']='cre' ">
+			<xsl:when test="mods:role/mods:roleTerm[@type='text']='Creator' or mods:role/mods:roleTerm[@type='code']='cre' or mods:role/mods:roleTerm[@type='text']='Author' or mods:role/mods:roleTerm[@type='code']='aut' ">
 				<dc:creator>
 					<xsl:call-template name="name"/>
 				</dc:creator>
@@ -386,7 +386,7 @@
 				<xsl:value-of select="mods:displayForm"/>
 				<xsl:text>) </xsl:text>
 			</xsl:if>
-			<xsl:for-each select="mods:role[mods:roleTerm[@type='text']!='creator']">
+			<xsl:for-each select="mods:role[mods:roleTerm[@type='text']!='Creator' and mods:roleTerm[@type='text']!='Author']">
 				<xsl:text> (</xsl:text>
 				<xsl:value-of select="normalize-space(child::*)"/>
 				<xsl:text>) </xsl:text>
